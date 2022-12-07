@@ -10,6 +10,9 @@ function Burger({ helmet }) {
 
   return (
     <header className="flex padding-header justify-between align-center">
+      <Link to="/">
+        <img src={logo} alt={`logo de ${helmet.title}`} className="logo" />
+      </Link>
       <button
         type="button"
         onClick={() => setOpenBurger(!openBurger)}
@@ -21,9 +24,6 @@ function Burger({ helmet }) {
           className="burger"
         />
       </button>
-      <Link to="/">
-        <img src={logo} alt={`logo de ${helmet.title}`} className="logo" />
-      </Link>
       {openBurger && <Nav setOpenBurger={setOpenBurger} />}
       <div className="desktop">
         <Navbar setOpenBurger={setOpenBurger} />

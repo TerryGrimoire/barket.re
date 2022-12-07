@@ -11,9 +11,9 @@ import "./App.css";
 
 function App() {
   const helmet = {
-    title: "Change Title",
-    href: "https://changehref.com",
-    description: "Change description",
+    title: "BARKET.RE",
+    href: "https://barket.re",
+    description: "Pou cet y aime manzé kréol",
   };
   return (
     <BrowserRouter>

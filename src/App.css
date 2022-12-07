@@ -1,13 +1,13 @@
 /********************************************************************* CSS VARIABLES *********************************************************************/ 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Mukta:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap');
 :root {
 
   --main-bg-color : #FFFFFF;
   --secondary-bg-color : #191919;
   --third-color : #999999;
   --button-color: #0055FF;
-  --box-shadow: #e1e1e1 0px 1px 0px, #e1e1e1 0px 4px 16px, #e1e1e1 0px 8px 16px;
-  --font-title : 'Mukta', sans-serif;
+  --box-shadow: #cac2c2 0px 1px 0px, #e5d2d2 0px 2px 8px, #eeebeb 0px 4px 8px;
+  --font-title : 'Glass Antiqua', cursive;
   --font-text :'Josefin Sans', sans-serif;
 }
 
@@ -23,6 +23,7 @@
   background-color: var(--main-bg-color);
   font-family: var(--font-text);
   overflow-x: hidden;
+  line-height: 1.5;
 }
 
 h1, h2 {
@@ -108,7 +109,7 @@ section {
 /********************************************************************* NAV *********************************************************************/ 
 
 .openBurger {
-  z-index: 1;
+  z-index: 2;
   height: 100%;
   padding: 0 0 2rem;
   width: 100%;
@@ -157,11 +158,13 @@ button.croix {
 }
 
 .burger {
-height: 2rem;
+height: 1.5rem;
+padding: 0.25 1rem;
+margin-right: 1rem ;
 }
 
 .logo {
-  height: 4rem;
+  height: 4.5rem;
 }
 
 /********************************************************************* HOME *********************************************************************/ 
@@ -188,6 +191,7 @@ height: 2rem;
   z-index: 1;
   margin: 0;
   color: var(--main-bg-color);
+  text-align: center;
 }
 
   .background_img {
@@ -203,7 +207,10 @@ height: 2rem;
     height: 100%;
     opacity: 60%;
   }
-
+span.title{
+  background-color: transparent;
+  font-family: var(--font-title);
+}
 
 /********************************************************************* Page 1 *********************************************************************/ 
 

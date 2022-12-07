@@ -1,7 +1,7 @@
 import React from "react";
 import background from "../../../assets/background.png";
 
-function Image({ title }) {
+function Image() {
   /* Pour utiliser ce composant, suivre les étapes suivantes :
 
     1/ Remplacer background.png par l'image souhaitée dans Assets
@@ -16,12 +16,14 @@ function Image({ title }) {
   */
 
   const landingData = {
-    h2: "Belle phrase d'accroche",
+    h2: "Sé sa lo gou mon péi",
     alt: "decription de l'image",
   };
   return (
     <section className="landing_page relative">
-      <h1>{title}</h1>
+      <h1>
+        BARKET<span className="title">.RE</span>
+      </h1>
       <h2>{landingData.h2}</h2>
       <img src={background} alt={landingData.alt} className="background_img" />
       <div className="veil" />
