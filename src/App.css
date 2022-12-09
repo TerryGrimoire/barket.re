@@ -224,7 +224,7 @@ form * {
 
 .home_container {
   position: relative;
-  min-height: 110vh
+  min-height: 90vh
 }
 
 .home_container * {
@@ -238,7 +238,7 @@ z-index: 0;
 }
 
 .home_container img {
-  height: 50vh;
+  height: 35vh;
   width: auto;
 }
 /********************************************************************* Page 1 *********************************************************************/ 
