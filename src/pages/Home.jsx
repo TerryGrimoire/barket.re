@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Select from "react-select";
 import plat from "../assets/plat.png";
 
-export default function Home({ helmet, setCity }) {
+export default function Home({ helmet, setCity, setDate }) {
   useEffect(() => {
     window.scrollTo(0, 0);
+    setCity("📍Le Port");
   }, []);
 
   const cityOptions = [
@@ -18,6 +20,11 @@ export default function Home({ helmet, setCity }) {
     setCity(selectedOptions.label);
   };
 
+  const customStyles = {
+    menuPortal: (provided) => ({ ...provided, zIndex: 3 }),
+    menu: (provided) => ({ ...provided, zIndex: 3 }),
+  };
+
   return (
     <main className="flex-col home">
       <Helmet>
@@ -26,7 +33,7 @@ export default function Home({ helmet, setCity }) {
         <meta name="description" content={helmet.description} />
       </Helmet>
       <div className="home_container">
-        <h1>Toute la gastronomie créole à votre disposition ! </h1>
+        <h1>Toute la gastronomie créole à votre disposition </h1>
 
         <form>
           <Select
@@ -34,12 +41,21 @@ export default function Home({ helmet, setCity }) {
             onChange={handleCity}
             defaultValue={{ label: "Le Port", value: "Le Port" }}
             isClearable
+            menuPortalTarget={document.body}
+            menuPosition="fixed"
+            styles={customStyles}
           />
-          <select name="date" id="date">
+          <select
+            name="date"
+            id="date"
+            onChange={(e) => setDate(e.target.value)}
+          >
             <option value="today">⏱ Aujourd'hui</option>
             <option value="tomorrow">⏱ Demain</option>
           </select>
-          <button type="button">Trouver un restaurant</button>
+          <Link to="/restaurants">
+            <button type="button">Trouver un restaurant</button>
+          </Link>
         </form>
         <img
           src={plat}

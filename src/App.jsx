@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
-import Tarifs from "./pages/Tarifs";
+import Restaurant from "./pages/Restaurant";
 import Contact from "./pages/Contact";
 import Mentions from "./pages/Mentions";
 
@@ -19,27 +19,40 @@ function App() {
 
   const [city, setCity] = useState();
   const [food, setFood] = useState();
+  const [date, setDate] = useState();
   return (
     <BrowserRouter>
       <Header helmet={helmet} />
       <Routes>
         <Route
           path="/"
-          element={<Home helmet={helmet} setCity={setCity} setFood={setFood} />}
+          element={
+            <Home
+              helmet={helmet}
+              setCity={setCity}
+              setFood={setFood}
+              date={date}
+              setDate={setDate}
+            />
+          }
         />
         <Route
-          path="/Services"
+          path="/Restaurants"
           element={
             <Services
               helmet={helmet}
               setCity={setCity}
               city={city}
+              date={date}
               food={food}
               setFood={setFood}
             />
           }
         />
-        <Route path="/Tarifs" element={<Tarifs helmet={helmet} />} />
+        <Route
+          path="/Restaurants/:id"
+          element={<Restaurant helmet={helmet} />}
+        />
         <Route path="/Contact" element={<Contact helmet={helmet} />} />
         <Route path="/Mentions" element={<Mentions />} />
       </Routes>

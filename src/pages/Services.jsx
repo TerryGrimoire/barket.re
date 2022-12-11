@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Select from "react-select";
+// import Select from "react-select";
+import restaurantsData from "../data/restaurantsData.json";
 
-function Services({ helmet, setFood }) {
+function Services({ helmet, date, city }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const foodOptions = [
+  /* const foodOptions = [
     { value: "Cari", label: "Cari" },
     { value: "Pain", label: "Pain" },
     { value: "Tapas", label: "Tapas" },
@@ -53,18 +55,46 @@ function Services({ helmet, setFood }) {
   const handleFood = (selectedOptions) => {
     setFood(selectedOptions.map((el) => el.label));
   };
-
+*/
   return (
-    <div>
+    <div className="services">
       <Helmet>
-        <title> {helmet.title} | Services </title>
+        <title> {helmet.title} | Restautants </title>
         <link rel="canonical" href={`${helmet.href}/Services`} />
         <meta name="description" content={helmet.description} />
       </Helmet>
-
       <section>
-        <Select options={foodOptions} onChange={handleFood} isMulti />
+        <div className="flex">
+          <p>Ville : </p>
+          <p>{city}</p>
+        </div>
+
+        <div className="flex">
+          <p>Date : </p>
+          <p>{date === "today" ? "Aujourd'hui" : "Demain"}</p>
+        </div>
       </section>
+
+      <section className="restaurants_container">
+        {restaurantsData.map((restaurant) => (
+          <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
+            <div className="restaurant_services">
+              <div className="flex justify-between align-center">
+                <h3>{restaurant.title}</h3>
+                <small>Prix moyen: {restaurant.price}€</small>
+              </div>
+              <img src={restaurant.src} alt={restaurant.alt} />
+              <div className="flex justify-between align-center">
+                <p>{restaurant.description}</p>
+                <small>Ferme à {restaurant.close}</small>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </section>
+      {/* <section>
+        <Select options={foodOptions} onChange={handleFood} isMulti />
+  </section> */}
     </div>
   );
 }
