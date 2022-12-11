@@ -107,6 +107,11 @@ section {
 .margin0r1r {
   margin: 0 1rem;
 }
+
+.white, .white * {
+  background-color: var(--third-color);
+  color: var(--secondary-bg-color);
+}
 /********************************************************************* NAV *********************************************************************/ 
 
 .openBurger {
@@ -170,7 +175,6 @@ margin-right: 1rem ;
 
 /********************************************************************* HOME *********************************************************************/ 
 .home {
-  margin: 2rem 0;
   overflow-x: hidden;
   background-color: var(--main-bg-color);
 }
@@ -179,21 +183,19 @@ margin-right: 1rem ;
   padding: 1rem 3rem;
 }
 
-input {
-  color: #0055FF;
-}
-
 .home form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
 }
 
 .home form > * {
   width: 90%;
   height: 3rem;
   margin: 1rem 0;
+  background-color: transparent;
 }
 .home form input {
   height: 2rem;
@@ -206,6 +208,9 @@ form * {
   background-color: var(--third-color);
 }
 
+.home select {
+  border-right: 16px solid transparent;
+}
 .home form button {
   margin: 1rem auto;
   padding: 0.5rem ;
@@ -233,13 +238,18 @@ form * {
 
 .home .plat {
 position: absolute;
-bottom: 1rem;
+bottom: 0rem;
 z-index: 0;
+overflow: visible;
 }
 
 .home_container img {
-  height: 35vh;
+  height: 40vh;
   width: auto;
+}
+
+.home h2 {
+  font-size: 2rem;
 }
 /********************************************************************* Page 1 *********************************************************************/ 
 
