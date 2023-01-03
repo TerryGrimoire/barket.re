@@ -77,7 +77,7 @@ export default function Home({ helmet }) {
     const json = data.map((line, index) => {
       if (index > 0) {
         data[0].forEach((key, j) => {
-          if (line[j] !== "" && j > 0) {
+          if (line[j] !== "" && key !== "") {
             obj = { ...obj, [key]: line[j] };
           }
         });

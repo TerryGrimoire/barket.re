@@ -16,8 +16,6 @@ function Restaurant({ helmet }) {
     el.Nom.toLowerCase().replace(" ", "_").includes(id.toLowerCase())
   );
 
-  console.log(menu);
-  console.log(resto);
   return (
     <div className="restaurant_page">
       <Helmet>
@@ -26,40 +24,60 @@ function Restaurant({ helmet }) {
         <meta name="description" content={helmet.description} />
       </Helmet>
 
-      {/* resto && (
+      {resto && (
         <>
           <section className="top">
             <div>
-              <h1>{resto[id].Titre}</h1>
-              <p>{resto[id].description}</p>
+              <h1>{resto[0].Titre}</h1>
+              <p>{resto[0].description}</p>
             </div>
-            <iframe src={resto[id].Maps} title={resto[id].Titre} />
+            <iframe src={resto[0].Maps} title={resto[0].Titre} />
           </section>
           <section className="contact">
             <h2>Contact</h2>
-            <p>Téléphone : {resto[id].Numéro}</p>
-            <p>Email : {resto[id].Email}</p>
-            <p>Site internet : {resto[id].Site}</p>
+            <p>Téléphone : {resto[0].Numéro}</p>
+            <p>Email : {resto[0].Email}</p>
+            <p>Site internet : {resto[0].Site}</p>
             <p>Nous trouver : Dans la médiathèque du Port.</p>
-            <p>Adresse : {resto[id].Adresse}</p>
+            <p>Adresse : {resto[0].Adresse}</p>
           </section>
         </>
-      ) */}
-
-      {/* resto.today && (
-        <section className="plats_du_jour">
-          <h2>Barquettes du jour</h2>
-          {resto.today.map((today) => (
-            <div className="flex justify-between align-center">
-              <p>{today.name}</p>
-              <p>{today.prix}€</p>
-            </div>
-          ))}
-        </section>
-          ) */}
+      )}
 
       <section>
         <h2>La carte</h2>
+        <div>
+          <h3>Les plats</h3>
+          {menu && (
+            <>
+              {menu
+                .filter((el) => el.Type !== "Dessert")
+                .map((el) => (
+                  <div>
+                    <p>{el.Plat}</p>
+                    <p>{el.Description}</p>
+                    <p>{el.Prix}</p>
+                  </div>
+                ))}
+            </>
+          )}
+        </div>
+        <div>
+          <h3>Les desserts</h3>
+          {menu && (
+            <>
+              {menu
+                .filter((el) => el.Type === "Dessert")
+                .map((el) => (
+                  <div>
+                    <p>{el.Plat}</p>
+                    <p>{el.Description}</p>
+                    <p>{el.Prix}</p>
+                  </div>
+                ))}
+            </>
+          )}
+        </div>
       </section>
     </div>
   );
