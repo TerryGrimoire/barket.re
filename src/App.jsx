@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
-import Services from "./pages/Services";
+import Restaurants from "./pages/Restaurants";
+import Menu from "./pages/Menu";
 import Restaurant from "./pages/Restaurant";
 import Contact from "./pages/Contact";
 import Mentions from "./pages/Mentions";
@@ -17,46 +19,26 @@ function App() {
     description: "Pou cet y aime manzé kréol",
   };
 
-  const [city, setCity] = useState();
-  const [food, setFood] = useState();
-  const [date, setDate] = useState();
   return (
     <BrowserRouter>
-      <Header helmet={helmet} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              helmet={helmet}
-              setCity={setCity}
-              setFood={setFood}
-              date={date}
-              setDate={setDate}
-            />
-          }
-        />
-        <Route
-          path="/Restaurants"
-          element={
-            <Services
-              helmet={helmet}
-              setCity={setCity}
-              city={city}
-              date={date}
-              food={food}
-              setFood={setFood}
-            />
-          }
-        />
-        <Route
-          path="/Restaurants/:id"
-          element={<Restaurant helmet={helmet} />}
-        />
-        <Route path="/Contact" element={<Contact helmet={helmet} />} />
-        <Route path="/Mentions" element={<Mentions />} />
-      </Routes>
-      <Footer />
+      <HelmetProvider>
+        <Header helmet={helmet} />
+        <Routes>
+          <Route path="/" element={<Home helmet={helmet} />} />
+          <Route
+            path="/Restaurants"
+            element={<Restaurants helmet={helmet} />}
+          />
+          <Route path="/Menu" element={<Menu helmet={helmet} />} />
+          <Route
+            path="/Restaurants/:id"
+            element={<Restaurant helmet={helmet} />}
+          />
+          <Route path="/Contact" element={<Contact helmet={helmet} />} />
+          <Route path="/Mentions" element={<Mentions />} />
+        </Routes>
+        <Footer />
+      </HelmetProvider>
     </BrowserRouter>
   );
 }

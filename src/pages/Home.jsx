@@ -1,19 +1,114 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import papa from "papaparse";
 import Select from "react-select";
 import plat from "../assets/plat.png";
 
-export default function Home({ helmet, setCity, setDate }) {
+export default function Home({ helmet }) {
   useEffect(() => {
     window.scrollTo(0, 0);
-    setCity("📍Le Port");
+  }, []);
+
+  const [options, setOptions] = useState();
+  const [city, setCity] = useState();
+
+  // On récupère toutes les informations des restaurants
+
+  const prepareData = (data) => {
+    // j correspond aux lignes de A à ZZZ sur fichier Excel
+    // index
+    // line correspond à
+    // index correspond à
+    // key correspond à
+
+    let obj = {};
+    const json = data.map((line, index) => {
+      if (index > 0) {
+        data[0].forEach((key, j) => {
+          if (
+            (key.includes("Lundi") ||
+              key.includes("Mardi") ||
+              key.includes("Mercredi") ||
+              key.includes("Jeudi") ||
+              key.includes("Vendredi") ||
+              key.includes("Samedi") ||
+              key.includes("Dimanche")) &&
+            line[j] !== ""
+          ) {
+            obj = { ...obj, date: { ...obj.date, [key]: line[j] } };
+          } else if (line[j] !== "" && j > 0) {
+            obj = { ...obj, [key]: line[j] };
+          }
+        });
+      }
+      return obj;
+    });
+
+    json.shift();
+    sessionStorage.setItem("restos", JSON.stringify(json));
+  };
+
+  useEffect(() => {
+    fetch(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNiVoP7pAGKKmgJhi964b4IN4uWue-zOuGMYE0r3joChxy0zDcOk9BQE6z-2YkpDXDPwMx4dlC7a_U/pub?output=csv"
+    )
+      .then((result) => result.text())
+      .then((text) => papa.parse(text))
+      .then((data) => prepareData(data.data));
   }, []);
 
   const cityOptions = [
-    { value: "Le Port", label: "📍Le Port" },
-    { value: "Saint-Denis", label: "📍Saint-Denis" },
-    { value: "Sainte-Clotilde", label: "📍Sainte-Clotilde" },
+    { value: "Le Port", label: "Le Port" },
+    { value: "Saint-Denis", label: "Saint-Denis" },
+    { value: "Sainte-Clotilde", label: "Sainte-Clotilde" },
+  ];
+
+  // get data for all the menus
+
+  const prepareData2 = (data) => {
+    // j correspond aux lignes de A à ZZZ sur fichier Excel
+    // index
+    // line correspond à
+    // index correspond à
+    // key correspond à
+
+    let obj = {};
+    const json = data.map((line, index) => {
+      if (index > 0) {
+        data[0].forEach((key, j) => {
+          if (line[j] !== "" && j > 0) {
+            obj = { ...obj, [key]: line[j] };
+          }
+        });
+      }
+      return obj;
+    });
+
+    json.shift();
+    sessionStorage.setItem("menus", JSON.stringify([...new Set(json)]));
+  };
+
+  useEffect(() => {
+    fetch(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNiVoP7pAGKKmgJhi964b4IN4uWue-zOuGMYE0r3joChxy0zDcOk9BQE6z-2YkpDXDPwMx4dlC7a_U/pub?gid=749768856&single=true&output=csv"
+    )
+      .then((result) => result.text())
+      .then((text) => papa.parse(text))
+      .then((data) => prepareData2(data.data));
+  }, []);
+
+  const handleOptions = (selectedOptions) => {
+    setOptions(selectedOptions.label);
+  };
+
+  const choiceOptions = [
+    { value: "Menu du jour", label: "Menu du jour" },
+    { value: "Dessert du jour", label: "Dessert du jour" },
+    { value: "Restaurants créoles", label: "Restaurants créoles" },
+    { value: "Pains et Lords", label: "Pains et Lords" },
+    { value: "Restaurants chinois", label: "Restaurants chinois" },
+    { value: "Restaurants végétariens", label: "Restaurants végétariens" },
   ];
 
   const handleCity = (selectedOptions) => {
@@ -23,6 +118,24 @@ export default function Home({ helmet, setCity, setDate }) {
   const customStyles = {
     menuPortal: (provided) => ({ ...provided, zIndex: 3 }),
     menu: (provided) => ({ ...provided, zIndex: 3 }),
+  };
+
+  // When user clicks on "Trouver un restaurant"
+  // the function handleClick stores the choices and redirects to the appropriate page
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const recherche = {
+      choix: options,
+      city,
+    };
+    sessionStorage.setItem("recherche", JSON.stringify(recherche));
+    if (options.includes("du jour")) {
+      navigate("/Menu");
+    } else {
+      navigate("/Restaurants");
+    }
   };
 
   return (
@@ -37,25 +150,27 @@ export default function Home({ helmet, setCity, setDate }) {
 
         <form>
           <Select
-            options={cityOptions}
-            onChange={handleCity}
-            defaultValue={{ label: "Le Port", value: "Le Port" }}
+            options={choiceOptions}
+            onChange={handleOptions}
             isClearable
             menuPortalTarget={document.body}
             menuPosition="fixed"
             styles={customStyles}
+            placeholder="Kosa ou manz zordi ?"
           />
-          <select
-            name="date"
-            id="date"
-            onChange={(e) => setDate(e.target.value)}
-          >
-            <option value="today">⏱ Aujourd'hui</option>
-            <option value="tomorrow">⏱ Demain</option>
-          </select>
-          <Link to="/restaurants">
-            <button type="button">Trouver un restaurant</button>
-          </Link>
+          <Select
+            options={cityOptions}
+            onChange={handleCity}
+            isClearable
+            menuPortalTarget={document.body}
+            menuPosition="fixed"
+            placeholder="Oussa ou lé ?"
+            styles={customStyles}
+          />
+
+          <button type="button" onClick={handleClick}>
+            Trouver un restaurant
+          </button>
         </form>
         <img
           src={plat}

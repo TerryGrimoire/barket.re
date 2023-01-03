@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 // import Select from "react-select";
-import restaurantsData from "../data/restaurantsData.json";
 
-function Services({ helmet, date, city }) {
+function Restaurants({ helmet }) {
+  const [restos, setRestos] = useState();
+  const [recherche, setRecherche] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    setRecherche(JSON.parse(sessionStorage.getItem("recherche")));
+    setRestos(JSON.parse(sessionStorage.getItem("restos")));
   }, []);
 
   /* const foodOptions = [
@@ -56,47 +60,76 @@ function Services({ helmet, date, city }) {
     setFood(selectedOptions.map((el) => el.label));
   };
 */
+
+  const today = new Date();
+  const day = today.getDay();
+  const dayList = [
+    "Dimanche",
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+  ];
+
+  const close = dayList[day];
+
+  console.log(dayList[day]);
+
   return (
-    <div className="services">
+    <div className="restaurants">
       <Helmet>
         <title> {helmet.title} | Restautants </title>
-        <link rel="canonical" href={`${helmet.href}/Services`} />
+        <link rel="canonical" href={`${helmet.href}/Restaurants`} />
         <meta name="description" content={helmet.description} />
       </Helmet>
       <section>
-        <div className="flex">
-          <p>Ville : </p>
-          <p>{city}</p>
-        </div>
-
-        <div className="flex">
-          <p>Date : </p>
-          <p>{date === "today" ? "Aujourd'hui" : "Demain"}</p>
-        </div>
+        <h1>
+          {recherche.choix} à {recherche.city}
+        </h1>
       </section>
 
       <section className="restaurants_container">
-        {restaurantsData.map((restaurant) => (
-          <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
-            <div className="restaurant_services">
-              <div className="flex justify-between align-center">
-                <h3>{restaurant.title}</h3>
-                <small>Prix moyen: {restaurant.price}€</small>
-              </div>
-              <img src={restaurant.src} alt={restaurant.alt} />
-              <div className="flex justify-between align-center">
-                <p>{restaurant.description}</p>
-                <small>Ferme à {restaurant.close}</small>
-              </div>
-            </div>
-          </Link>
-        ))}
+        {restos &&
+        restos.filter(
+          (el) =>
+            el.Ville.toLowerCase().includes(recherche.city.toLowerCase()) &&
+            recherche.choix.toLowerCase().includes(el.Type.toLowerCase())
+        ).length > 0 ? (
+          restos
+            .filter(
+              (el) =>
+                el.Ville.toLowerCase().includes(recherche.city.toLowerCase()) &&
+                recherche.choix.toLowerCase().includes(el.Type.toLowerCase())
+            )
+            .map((restaurant) => (
+              <Link
+                to={`/restaurants/${restaurant.Nom.replace(" ", "_")}`}
+                key={restaurant.id}
+              >
+                <div className="restaurant_restaurants">
+                  <div className="flex justify-between align-center">
+                    <h3>{restaurant.Nom}</h3>
+                    <small>Prix moyen: {restaurant.Ville}€</small>
+                  </div>
+                  <img src={restaurant.img} alt={restaurant.Nom} />
+                  <div className="flex justify-between align-center">
+                    <p>{restaurant.description}</p>
+                    <small>Ferme à {close}</small>
+                  </div>
+                </div>
+              </Link>
+            ))
+        ) : (
+          <p>
+            Malheureusement, aucun restaurants de disponible avec votre
+            recherche
+          </p>
+        )}
       </section>
-      {/* <section>
-        <Select options={foodOptions} onChange={handleFood} isMulti />
-  </section> */}
     </div>
   );
 }
 
-export default Services;
+export default Restaurants;
