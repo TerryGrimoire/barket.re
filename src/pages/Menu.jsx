@@ -60,7 +60,7 @@ function Menu({ helmet }) {
                             .includes(el.Nom.toLowerCase())
                         )
                         .map((restaurant) => (
-                          <span>{restaurant.Indication}</span>
+                          <small>{restaurant.Indication}</small>
                         ))}
                     </p>
                   </div>
@@ -92,7 +92,7 @@ function Menu({ helmet }) {
                             .includes(el.Nom.toLowerCase())
                         )
                         .map((restaurant) => (
-                          <span>{restaurant.Indication}</span>
+                          <small>{restaurant.Indication}</small>
                         ))}
                     </p>
                   </div>

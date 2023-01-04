@@ -338,6 +338,10 @@ overflow: visible;
   align-items: center;
 }
 
+.menu_page section > a small {
+color: lightslategrey
+}
+
 .menu_middle section > a {
   margin: 3rem 0;
   display: flex;
