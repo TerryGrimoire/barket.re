@@ -299,6 +299,7 @@ overflow: visible;
 
 .restaurant_page h1 {
   margin: 0;
+  text-align: center;
 }
 .restaurant_page .top div{
   display: flex;
@@ -310,6 +311,10 @@ overflow: visible;
 .restaurant_page iframe {
   width: 100%;
   height: 30vh;
+}
+
+.restaurant_page section {
+  padding: 1rem;
 }
 
 /********************************************************************* MENU *********************************************************************/ 

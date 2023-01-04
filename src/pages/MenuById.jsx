@@ -50,12 +50,10 @@ function Restaurant({ helmet }) {
       {resto && menu && (
         <>
           <section>
-            <div>
-              <h1>Découvrir {resto[0].Nom}</h1>
-              <p>{resto[0].description}</p>
-            </div>
-            <iframe src={resto[0].Maps} title={resto[0].Titre} />
+            <h1>Découvrir {resto[0].Nom}</h1>
+            <p>{resto[0].description}</p>
           </section>
+          <iframe src={resto[0].Maps} title={resto[0].Titre} />
           <section className="contact">
             <h2>Contact</h2>
             <p>Téléphone : {resto[0].Numéro}</p>
