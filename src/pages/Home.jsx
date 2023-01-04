@@ -157,6 +157,7 @@ export default function Home({ helmet }) {
             menuPosition="fixed"
             styles={customStyles}
             placeholder="Kosa ou manz zordi ?"
+            isSearchable={false}
           />
           <Select
             options={cityOptions}
@@ -166,6 +167,7 @@ export default function Home({ helmet }) {
             menuPosition="fixed"
             placeholder="Oussa ou lé ?"
             styles={customStyles}
+            isSearchable={false}
           />
 
           <button type="button" onClick={handleClick}>
