@@ -12,6 +12,8 @@ function Menu({ helmet }) {
     setRecherche(JSON.parse(sessionStorage.getItem("recherche")));
   }, []);
 
+  const resto = JSON.parse(sessionStorage.getItem("restos"));
+
   return (
     <div className="menu_page">
       <Helmet>
@@ -43,17 +45,26 @@ function Menu({ helmet }) {
                   ) && el.Type.toLowerCase().includes("repas")
               )
               .map((el) => (
-                <div key={el.Plat}>
+                <Link to={`/Menu/${el.Nom}/${el.Plat}`}>
                   <div className="top">
-                    <h3>
-                      {el.Plat} de{"  "}
-                      <Link to={`/Restaurants/${el.Nom}`}>
-                        <span>{el.Nom.replace("_", " ")}</span>
-                      </Link>
-                    </h3>
+                    <h3>{el.Plat}</h3>
                     <h3>{el.Prix}</h3>
                   </div>
-                </div>
+                  <div className="bottom">
+                    <p>
+                      {el.Nom.replace("_", " ")} -{" "}
+                      {resto
+                        .filter((element) =>
+                          element.Nom.toLowerCase()
+                            .replace(" ", "_")
+                            .includes(el.Nom.toLowerCase())
+                        )
+                        .map((restaurant) => (
+                          <span>{restaurant.Indication}</span>
+                        ))}
+                    </p>
+                  </div>
+                </Link>
               ))}
           </section>
           <section>
@@ -66,17 +77,26 @@ function Menu({ helmet }) {
                   ) && el.Type.toLowerCase().includes("dessert")
               )
               .map((el) => (
-                <div key={el.Plat}>
+                <Link to={`/Menu/${el.Nom}/${el.Plat}`}>
                   <div className="top">
-                    <h3>
-                      {el.Plat} de{"  "}
-                      <Link to={`/Restaurants/${el.Nom}`}>
-                        <span>{el.Nom.replace("_", " ")}</span>
-                      </Link>
-                    </h3>
+                    <h3>{el.Plat}</h3>
                     <h3>{el.Prix}</h3>
                   </div>
-                </div>
+                  <div className="bottom">
+                    <p>
+                      {el.Nom.replace("_", " ")} -{" "}
+                      {resto
+                        .filter((element) =>
+                          element.Nom.toLowerCase()
+                            .replace(" ", "_")
+                            .includes(el.Nom.toLowerCase())
+                        )
+                        .map((restaurant) => (
+                          <span>{restaurant.Indication}</span>
+                        ))}
+                    </p>
+                  </div>
+                </Link>
               ))}
           </section>
         </section>

@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Restaurants from "./pages/Restaurants";
 import Menu from "./pages/Menu";
+import MenuById from "./pages/MenuById";
 import Restaurant from "./pages/Restaurant";
 import Contact from "./pages/Contact";
 import Mentions from "./pages/Mentions";
@@ -30,6 +31,10 @@ function App() {
             element={<Restaurants helmet={helmet} />}
           />
           <Route path="/Menu" element={<Menu helmet={helmet} />} />
+          <Route
+            path="/Menu/:restaurant/:plat"
+            element={<MenuById helmet={helmet} />}
+          />
           <Route
             path="/Restaurants/:id"
             element={<Restaurant helmet={helmet} />}
