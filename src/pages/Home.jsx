@@ -23,22 +23,305 @@ export default function Home({ helmet }) {
     // key correspond à
 
     let obj = {};
+
     const json = data.map((line, index) => {
       if (index > 0) {
         data[0].forEach((key, j) => {
           if (
-            (key.includes("Lundi") ||
-              key.includes("Mardi") ||
-              key.includes("Mercredi") ||
-              key.includes("Jeudi") ||
-              key.includes("Vendredi") ||
-              key.includes("Samedi") ||
-              key.includes("Dimanche")) &&
-            line[j] !== ""
+            line[j] !== "" &&
+            j > 0 &&
+            line[j] !== "NON" &&
+            line[j] !== "Ferme"
           ) {
-            obj = { ...obj, date: { ...obj.date, [key]: line[j] } };
-          } else if (line[j] !== "" && j > 0) {
-            obj = { ...obj, [key]: line[j] };
+            switch (key) {
+              case "LundiO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    lundi: { [key]: line[j] },
+                  },
+                };
+                break;
+              case "LundiF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    lundi: { ...obj.date.lundi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Lundi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    lundi: { ...obj.date.lundi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Lundi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    lundi: { ...obj.date.lundi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "MardiO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mardi: { ...obj.date.mardi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Mardi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mardi: { ...obj.date.mardi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "MardiF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mardi: { ...obj.date.mardi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Mardi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mardi: { ...obj.date.mardi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "MercrediO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mercredi: { ...obj.date.mercredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Mercredi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mercredi: { ...obj.date.mercredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "MercrediF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mercredi: { ...obj.date.mercredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Mercredi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    mercredi: { ...obj.date.mercredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "JeudiO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    jeudi: { ...obj.date.jeudi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Jeudi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    jeudi: { ...obj.date.jeudi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "JeudiF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    jeudi: { ...obj.date.jeudi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Jeudi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    jeudi: { ...obj.date.jeudi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "VendrediO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    vendredi: { ...obj.date.vendredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Vendredi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    vendredi: { ...obj.date.vendredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "VendrediF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    vendredi: { ...obj.date.vendredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Vendredi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    vendredi: { ...obj.date.vendredi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "SamediO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    samedi: { ...obj.date.samedi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Samedi2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    samedi: { ...obj.date.samedi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "SamediF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    samedi: { ...obj.date.samedi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Samedi2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    samedi: { ...obj.date.samedi, [key]: line[j] },
+                  },
+                };
+                break;
+              case "DimancheO":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    dimanche: { ...obj.date.dimanche, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Dimanche2O":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    dimanche: { ...obj.date.dimanche, [key]: line[j] },
+                  },
+                };
+                break;
+              case "DimancheF":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    dimanche: { ...obj.date.dimanche, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Dimanche2F":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    dimanche: { ...obj.date.dimanche, [key]: line[j] },
+                  },
+                };
+                break;
+              case "Especes":
+                obj = {
+                  ...obj,
+                  paiement: [key],
+                };
+                break;
+              case "Carte":
+                obj = {
+                  ...obj,
+                  paiement: [...obj.paiement, key],
+                };
+                break;
+              case "Cheque":
+                obj = {
+                  ...obj,
+                  paiement: [...obj.paiement, key],
+                };
+                break;
+              case "Tickets":
+                obj = {
+                  ...obj,
+                  paiement: [...obj.paiement, key],
+                };
+                break;
+              case "Ouvert":
+                obj = {
+                  ...obj,
+                  date: {
+                    ...obj.date,
+                    dimanche: { ...obj.date.dimanche, [key]: line[j] },
+                  },
+                };
+                break;
+              default:
+                obj = { ...obj, [key]: line[j] };
+            }
           }
         });
       }

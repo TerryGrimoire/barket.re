@@ -36,7 +36,7 @@ function Menu({ helmet }) {
           }
         >
           <section>
-            <h2>Les plats salés du jour</h2>
+            <h2>Les plats du jour à {recherche.city}</h2>
             {menu
               .filter(
                 (el) =>
@@ -68,7 +68,7 @@ function Menu({ helmet }) {
               ))}
           </section>
           <section>
-            <h2>Les desserts du jour</h2>
+            <h2>Les desserts du jour à {recherche.city}</h2>
             {menu
               .filter(
                 (el) =>

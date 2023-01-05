@@ -6,6 +6,7 @@
   --secondary-bg-color : #191919;
   --third-color : #F1f1f1;
   --button-color: #0055FF;
+  --lightgrey: lightslategrey;
   --box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 10px, rgba(0, 0, 0, 0.05) 0px 2.5px 5px;;
   --font-title : 'Glass Antiqua', cursive;
   --font-text :'Josefin Sans', sans-serif;
@@ -297,8 +298,8 @@ overflow: visible;
   color: var(--third-color);
 }
 
-.restaurant_page h1 {
-  margin: 0;
+h1 {
+  margin: 1rem 0 2rem;
   text-align: center;
 }
 .restaurant_page .top div{
@@ -327,11 +328,6 @@ overflow: visible;
   color: var(--third-color);
 }
 
-.menu_page h1 {
-  font-size: 2.5rem;
-  text-align: center;
-}
-
 .menu_page h3 {
   font-size: 1.2rem;
 }
@@ -344,7 +340,7 @@ overflow: visible;
 }
 
 .menu_page section > a small {
-color: lightslategrey
+color: var(--lightgrey)
 }
 
 .menu_middle section > a {
@@ -380,6 +376,44 @@ color: lightslategrey
 
 .reverse {
   flex-direction: column-reverse;
+}
+
+.carte {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--third-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 90vw;
+}
+
+.carte * {
+  background-color: var(--third-color);
+  color: var(--secondary-bg-color);
+}
+
+.carte p {
+  color: var(--lightgrey);
+}
+
+.carte div:first-child {
+  width: 100%;
+}
+/********************************************************************* MENU BY ID *********************************************************************/ 
+
+.menuById section {
+  margin: 1rem 0;
+}
+
+.menuById section div {
+  margin: 1rem 0;
+}
+
+.menuById .sucre, .menuById .sel {
+  margin: 2rem 0;
 }
 
 /********************************************************************* FOOTER *********************************************************************/ 

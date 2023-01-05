@@ -17,7 +17,7 @@ function Restaurant({ helmet }) {
   );
 
   return (
-    <div className="restaurant_page">
+    <div className="restaurant_page menuById">
       <Helmet>
         <title>{helmet.title} |</title>
         <link
@@ -32,14 +32,14 @@ function Restaurant({ helmet }) {
       </h1>
 
       <section>
-        <div className="menu_by_id">
+        <div className="menuById_container">
           {menu
             .filter((el) => el.Plat.toLowerCase().includes(plat.toLowerCase()))
             .map((el) => (
-              <div>
-                <div className="top">
-                  <p>{el.Plat}</p>
-                  <p>{el.Prix}</p>
+              <div className="carte">
+                <div className="flex justify-between">
+                  <h4>{el.Plat}</h4>
+                  <h4>{el.Prix}</h4>
                 </div>
                 <p>{el.Description}</p>
               </div>
@@ -50,7 +50,7 @@ function Restaurant({ helmet }) {
       {resto && menu && (
         <>
           <section>
-            <h1>Découvrir {resto[0].Nom}</h1>
+            <h2>Découvrir {resto[0].Nom}</h2>
             <p>{resto[0].description}</p>
           </section>
           <iframe src={resto[0].Maps} title={resto[0].Titre} />
@@ -82,10 +82,10 @@ function Restaurant({ helmet }) {
                     el.Type.toLowerCase().includes("repas")
                 )
                 .map((el) => (
-                  <div>
-                    <div className="top">
-                      <p>{el.Plat}</p>
-                      <p>{el.Prix}</p>
+                  <div className="carte">
+                    <div className="flex justify-between">
+                      <h4>{el.Plat}</h4>
+                      <h4>{el.Prix}</h4>
                     </div>
                     <p>{el.Description}</p>
                   </div>
@@ -109,10 +109,10 @@ function Restaurant({ helmet }) {
                     el.Type.toLowerCase().includes("dessert")
                 )
                 .map((el) => (
-                  <div>
-                    <div className="top">
-                      <p>{el.Plat}</p>
-                      <p>{el.Prix}</p>
+                  <div className="carte">
+                    <div className="flex justify-between">
+                      <h4>{el.Plat}</h4>
+                      <h4>{el.Prix}</h4>
                     </div>
                     <p>{el.Description}</p>
                   </div>
