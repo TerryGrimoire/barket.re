@@ -7,7 +7,7 @@ function Restaurant({ helmet }) {
     window.scrollTo(0, 0);
   }, []);
 
-  const dayList = [
+  /* const dayList = [
     "Dimanche",
     "Lundi",
     "Mardi",
@@ -16,6 +16,7 @@ function Restaurant({ helmet }) {
     "Vendredi",
     "Samedi",
   ];
+*/
 
   const { id } = useParams();
 

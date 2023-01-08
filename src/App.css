@@ -6,7 +6,7 @@
   --secondary-bg-color : #191919;
   --third-color : #F1f1f1;
   --button-color: #0055FF;
-  --lightgrey: lightslategrey;
+  --lightgrey: rgb(231, 243, 255);
   --box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 10px, rgba(0, 0, 0, 0.05) 0px 2.5px 5px;;
   --font-title : 'Glass Antiqua', cursive;
   --font-text :'Josefin Sans', sans-serif;
@@ -324,10 +324,6 @@ h1 {
   padding: 0rem 1rem;
 }
 
-.menu_page, .menu_page * {
-  color: var(--third-color);
-}
-
 .menu_page h3 {
   font-size: 1.2rem;
 }
@@ -349,15 +345,15 @@ color: var(--lightgrey)
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--third-color);
+  background-color: var(--main-bg-color);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 90vw;
 }
 
 .menu_middle section > a * {
-  background-color: var(--third-color);
-  color: var(--secondary-bg-color);
+  background-color: var(--main-bg-color);
+  color: var(--third-color);
 }
 
 .menu_middle div.top {
@@ -378,41 +374,55 @@ color: var(--lightgrey)
   flex-direction: column-reverse;
 }
 
+.menu_page, .menu_page * {
+  color: var(--secondary-bg-color);
+  background-color: var(--third-color);
+}
+/********************************************************************* MENU BY ID *********************************************************************/ 
+
+.menuById, .menuById * {
+  color: var(--secondary-bg-color);
+  background-color: var(--third-color);
+}
+
+.menuById section {
+  padding: 1rem;
+}
+
+.menuById .sucre, .menuById .sel {
+  margin: 2rem 0;
+}
+
+
 .carte {
   margin: 3rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--third-color);
+  background-color: var(--main-bg-color);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 90vw;
 }
 
 .carte * {
-  background-color: var(--third-color);
-  color: var(--secondary-bg-color);
+  background-color: var(--main-bg-color);
+  color: var(--third-color);
 }
 
 .carte p {
   color: var(--lightgrey);
+  margin-top: 1rem;
 }
 
 .carte div:first-child {
   width: 100%;
 }
-/********************************************************************* MENU BY ID *********************************************************************/ 
 
-.menuById section {
-  margin: 1rem 0;
-}
-
-.menuById section div {
-  margin: 1rem 0;
-}
-
-.menuById .sucre, .menuById .sel {
+.menuById iframe {
+  width: 100%;
+  height: 40vh;
   margin: 2rem 0;
 }
 

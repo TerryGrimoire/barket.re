@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 function Menu({ helmet }) {
   const [menu, setMenu] = useState([]);
   const [recherche, setRecherche] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setMenu(JSON.parse(sessionStorage.getItem("menus")));
     setRecherche(JSON.parse(sessionStorage.getItem("recherche")));
+    if (
+      JSON.parse(sessionStorage.getItem("recherche")).city === undefined ||
+      JSON.parse(sessionStorage.getItem("recherche")).choix === undefined
+    ) {
+      navigate("/");
+    }
   }, []);
 
   const resto = JSON.parse(sessionStorage.getItem("restos"));
@@ -45,14 +52,14 @@ function Menu({ helmet }) {
                   ) && el.Type.toLowerCase().includes("repas")
               )
               .map((el) => (
-                <Link to={`/Menu/${el.Nom}/${el.Plat}`}>
+                <Link to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}>
                   <div className="top">
                     <h3>{el.Plat}</h3>
                     <h3>{el.Prix}</h3>
                   </div>
                   <div className="bottom">
                     <p>
-                      {el.Nom.replace("_", " ")} -{" "}
+                      {el.Nom.replaceAll("_", " ")} -{" "}
                       {resto
                         .filter((element) =>
                           element.Nom.toLowerCase()
@@ -77,7 +84,7 @@ function Menu({ helmet }) {
                   ) && el.Type.toLowerCase().includes("dessert")
               )
               .map((el) => (
-                <Link to={`/Menu/${el.Nom}/${el.Plat}`}>
+                <Link to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}>
                   <div className="top">
                     <h3>{el.Plat}</h3>
                     <h3>{el.Prix}</h3>

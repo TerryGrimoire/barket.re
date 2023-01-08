@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 // import Select from "react-select";
 
 function Restaurants({ helmet }) {
   const [restos, setRestos] = useState();
   const [recherche, setRecherche] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
     setRecherche(JSON.parse(sessionStorage.getItem("recherche")));
     setRestos(JSON.parse(sessionStorage.getItem("restos")));
+    if (
+      JSON.parse(sessionStorage.getItem("recherche")).city === undefined ||
+      JSON.parse(sessionStorage.getItem("recherche")).choix === undefined
+    ) {
+      navigate("/");
+    }
   }, []);
 
   /* const foodOptions = [
@@ -74,8 +80,6 @@ function Restaurants({ helmet }) {
   ];
 
   const close = dayList[day];
-
-  console.log(dayList[day]);
 
   return (
     <div className="restaurants">
