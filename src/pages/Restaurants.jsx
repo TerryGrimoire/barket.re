@@ -112,17 +112,17 @@ function Restaurants({ helmet }) {
                 to={`/restaurants/${restaurant.Nom.replace(" ", "_")}`}
                 key={restaurant.id}
               >
-                <div className="restaurant_restaurants">
-                  <div className="flex justify-between align-center">
-                    <h3>{restaurant.Nom}</h3>
-                    <small>Prix moyen: {restaurant.Ville}€</small>
+                <button type="button" className="carte">
+                  <div className="flex justify-left align-center">
+                    <h3>{restaurant.Nom} </h3>
+                    <p>- Restaurant {restaurant.Type}</p>
                   </div>
                   <img src={restaurant.img} alt={restaurant.Nom} />
                   <div className="flex justify-between align-center">
-                    <p>{restaurant.description}</p>
+                    <p>{restaurant.Indication}</p>
                     <small>Ferme à {close}</small>
                   </div>
-                </div>
+                </button>
               </Link>
             ))
         ) : (

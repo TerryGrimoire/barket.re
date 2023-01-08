@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 function Restaurant({ helmet }) {
@@ -17,9 +17,13 @@ function Restaurant({ helmet }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (resto.length <= 0) {
-      navigate("/");
+      navigate("/Menu");
     }
   }, []);
+
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="menuById">
@@ -47,7 +51,7 @@ function Restaurant({ helmet }) {
                   )
                 )
                 .map((el) => (
-                  <div className="carte">
+                  <div className="carte" key={el.Plat}>
                     <div className="flex justify-between">
                       <h4>{el.Plat}</h4>
                       <h4>{el.Prix}</h4>
@@ -66,12 +70,20 @@ function Restaurant({ helmet }) {
               </section>
               <iframe src={resto[0].Maps} title={resto[0].Titre} />
               <section className="contact">
-                <h2>Contact</h2>
+                <h2>Réservez dès maintenant</h2>
                 <p>Téléphone : {resto[0].Numéro}</p>
                 <p>Email : {resto[0].Email}</p>
                 <p>Site internet : {resto[0].Site}</p>
                 <p>Nous trouver : Dans la médiathèque du Port.</p>
                 <p>Adresse : {resto[0].Adresse}</p>
+              </section>
+              <section>
+                <h2>Moyens de paiement acceptés</h2>
+                {resto[0].paiement.length <= 1 ? (
+                  <p>Espèces uniquement</p>
+                ) : (
+                  resto[0].paiement.map((el) => <p key={el}>{el}</p>)
+                )}
               </section>
             </>
           )}
@@ -95,13 +107,22 @@ function Restaurant({ helmet }) {
                         ) && el.Type.toLowerCase().includes("repas")
                     )
                     .map((el) => (
-                      <div className="carte">
-                        <div className="flex justify-between">
-                          <h4>{el.Plat}</h4>
-                          <h4>{el.Prix}</h4>
-                        </div>
-                        <p>{el.Description}</p>
-                      </div>
+                      <Link
+                        to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                        key={el.Plat.replaceAll(" ", "_")}
+                      >
+                        <button
+                          className="carte"
+                          onClick={handleClick}
+                          type="button"
+                        >
+                          <div className="flex justify-between">
+                            <h4>{el.Plat}</h4>
+                            <h4>{el.Prix}</h4>
+                          </div>
+                          <p>{el.Description}</p>
+                        </button>
+                      </Link>
                     ))}
                 </div>
               )}
@@ -124,13 +145,22 @@ function Restaurant({ helmet }) {
                         ) && el.Type.toLowerCase().includes("dessert")
                     )
                     .map((el) => (
-                      <div className="carte">
-                        <div className="flex justify-between">
-                          <h4>{el.Plat}</h4>
-                          <h4>{el.Prix}</h4>
-                        </div>
-                        <p>{el.Description}</p>
-                      </div>
+                      <Link
+                        to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                        key={el.Plat.replaceAll(" ", "_")}
+                      >
+                        <button
+                          className="carte"
+                          onClick={handleClick}
+                          type="button"
+                        >
+                          <div className="flex justify-between">
+                            <h4>{el.Plat}</h4>
+                            <h4>{el.Prix}</h4>
+                          </div>
+                          <p>{el.Description}</p>
+                        </button>
+                      </Link>
                     ))}
                 </div>
               )}

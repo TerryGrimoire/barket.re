@@ -38,6 +38,10 @@ a {
   font-weight: initial;
 }
 
+a:hover, button:hover {
+  cursor: pointer;
+}
+
 li {
   list-style: none;
 }
@@ -271,22 +275,37 @@ overflow: visible;
   align-items: center;
 }
 
-/********************************************************************* SERVICES *********************************************************************/ 
+/********************************************************************* RESTAURANTS *********************************************************************/ 
 
-.services {
+.restaurants {
   overflow-x: hidden;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
 }
 
-.services img {
+.restaurants, .restaurants * {
+  background-color: var(--third-color);
+  color: var(--secondary-bg-color);
+}
+
+.restaurants img {
+  min-width: 100%;
+  max-height:7rem;
+  object-fit: cover;
+  margin: 0.5rem 0;
+}
+
+.restaurants div {
   width: 100%;
-  height: 10rem;
+  align-items: flex-end;
 }
 
-.services .restaurant_services {
-  padding: 1rem 0;
+.restaurants button {
+  border: none;
 }
 
+.restaurants h3 {
+  padding-right: 0.3rem;
+}
 /********************************************************************* RESTAURANT *********************************************************************/ 
 
 .restaurant_page {
@@ -301,6 +320,8 @@ overflow: visible;
 h1 {
   margin: 1rem 0 2rem;
   text-align: center;
+  padding: 1rem;
+  font-size: 2.5rem;
 }
 .restaurant_page .top div{
   display: flex;
@@ -425,6 +446,12 @@ color: var(--lightgrey)
   height: 40vh;
   margin: 2rem 0;
 }
+
+
+.menuById button {
+  border: none;
+}
+
 
 /********************************************************************* FOOTER *********************************************************************/ 
 
