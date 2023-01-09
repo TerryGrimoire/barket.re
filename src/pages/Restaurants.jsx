@@ -123,10 +123,10 @@ function Restaurants({ helmet }) {
 
   const responsive = {
     0: {
-      items: 2.5,
+      items: 3.5,
     },
     1024: {
-      items: 6,
+      items: 10,
     },
   };
 

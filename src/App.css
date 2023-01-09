@@ -319,7 +319,7 @@ overflow: visible;
 
 .restaurants .tri {
   width: 100vw;
-  padding: 0 1rem;
+  padding-left: 2rem;
 }
 
 .restaurants .tri button.item_okok {
@@ -332,6 +332,13 @@ overflow: visible;
   height: fit-content;
   width: 8rem;
   text-align: center;
+}
+
+.restaurants .tri img:focus, .restaurants .tri img:hover, .restaurants .tri img:active {
+  background-color: var(--main-bg-color);
+  padding: 0.5rem;
+  border: solid 1px blue;
+
 }
 
 .restaurants .tri img {
