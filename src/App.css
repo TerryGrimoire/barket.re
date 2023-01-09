@@ -330,6 +330,7 @@ overflow: visible;
   flex-direction: column;
   height: fit-content;
   width: fit-content;
+  text-align: center;
 }
 
 .restaurants .tri img {

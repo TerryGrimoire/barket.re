@@ -103,28 +103,28 @@ function Restaurants({ helmet }) {
   };
   const items = [
     <button type="button" onDragStart={handleDragStart}>
-      <img src={creole} alt="" /> Créole
+      <img src={creole} alt="" /> <p>Créole</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={pains} alt="" /> Pains
+      <img src={pains} alt="" /> <p>Pains</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={vegetarien} alt="" /> Végétarien
+      <img src={vegetarien} alt="" /> <p>Végétatien</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={chinois} alt="" /> Chinois
+      <img src={chinois} alt="" /> <p>Chinois</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={indien} alt="" /> Indien
+      <img src={indien} alt="" /> <p>Indien</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={desserts} alt="" /> Desserts
+      <img src={desserts} alt="" /> <p>Desserts</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={pizzas} alt="" /> Pizzas
+      <img src={pizzas} alt="" /> <p>Pizzas</p>
     </button>,
     <button type="button" onDragStart={handleDragStart}>
-      <img src={alcool} alt="" /> Alcool
+      <img src={alcool} alt="" /> <p>Alcool</p>
     </button>,
   ];
 
