@@ -312,6 +312,11 @@ overflow: visible;
   border: none;
 }
 
+.restaurants h1 {
+  font-size: 1.5rem;
+  text-align: left;
+  width: 100%;
+}
 
 .restaurants h3 {
   padding-right: 0.3rem;
@@ -334,18 +339,10 @@ overflow: visible;
   text-align: center;
 }
 
-.restaurants .tri img:focus, .restaurants .tri img:hover, .restaurants .tri img:active {
-  background-color: var(--main-bg-color);
-  padding: 0.5rem;
-  border: solid 1px blue;
-
-}
-
 .restaurants .tri img {
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
-
 }
 /********************************************************************* RESTAURANT *********************************************************************/ 
 
