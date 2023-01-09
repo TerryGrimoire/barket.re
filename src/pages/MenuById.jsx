@@ -9,14 +9,20 @@ function Restaurant({ helmet }) {
     el.Nom.toLowerCase().includes(restaurant.toLowerCase())
   );
   const resto = JSON.parse(sessionStorage.getItem("restos")).filter((el) =>
-    el.Nom.toLowerCase().replaceAll(" ", "_").includes(restaurant.toLowerCase())
+    el.Nom.toLowerCase().includes(restaurant.toLowerCase())
   );
 
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (resto.length <= 0) {
+    if (
+      !JSON.parse(sessionStorage.getItem("recherche")) ||
+      !JSON.parse(sessionStorage.getItem("recherche")).city ||
+      !JSON.parse(sessionStorage.getItem("recherche")).choix
+    ) {
+      navigate("/");
+    } else if (resto.length <= 0) {
       navigate("/Menu");
     }
   }, []);
