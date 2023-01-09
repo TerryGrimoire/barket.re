@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import Select from "react-select";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
+// import d'images pour le filtre
+
+import creole from "../assets/creole.png";
+import chinois from "../assets/chinois.png";
+import vegetarien from "../assets/vegetarien.png";
+import desserts from "../assets/dessert.png";
+import pains from "../assets/pain.png";
+import pizzas from "../assets/pizza.png";
+import indien from "../assets/indien.png";
+import alcool from "../assets/alcool.png";
 
 function Restaurants({ helmet }) {
   const [restos, setRestos] = useState();
@@ -80,6 +92,41 @@ function Restaurants({ helmet }) {
   ];
 
   const close = dayList[day];
+  const handleDragStart = (e) => e.preventDefault();
+  const responsive = {
+    0: {
+      items: 3,
+    },
+    1024: {
+      items: 5,
+    },
+  };
+  const items = [
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={creole} alt="" /> Créole
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={pains} alt="" /> Pains
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={vegetarien} alt="" /> Végétarien
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={chinois} alt="" /> Chinois
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={indien} alt="" /> Indien
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={desserts} alt="" /> Desserts
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={pizzas} alt="" /> Pizzas
+    </button>,
+    <button type="button" onDragStart={handleDragStart}>
+      <img src={alcool} alt="" /> Alcool
+    </button>,
+  ];
 
   return (
     <div className="restaurants">
@@ -88,24 +135,28 @@ function Restaurants({ helmet }) {
         <link rel="canonical" href={`${helmet.href}/Restaurants`} />
         <meta name="description" content={helmet.description} />
       </Helmet>
+      <h1>
+        {recherche.choix} à {recherche.city}
+      </h1>
       <section>
-        <h1>
-          {recherche.choix} à {recherche.city}
-        </h1>
+        <div className="tri">
+          <AliceCarousel
+            mouseTracking
+            disableDotsControls
+            items={items}
+            responsive={responsive}
+          />
+        </div>
       </section>
 
       <section className="restaurants_container">
         {restos &&
-        restos.filter(
-          (el) =>
-            el.Ville.toLowerCase().includes(recherche.city.toLowerCase()) &&
-            recherche.choix.toLowerCase().includes(el.Type.toLowerCase())
+        restos.filter((el) =>
+          el.Ville.toLowerCase().includes(recherche.city.toLowerCase())
         ).length > 0 ? (
           restos
-            .filter(
-              (el) =>
-                el.Ville.toLowerCase().includes(recherche.city.toLowerCase()) &&
-                recherche.choix.toLowerCase().includes(el.Type.toLowerCase())
+            .filter((el) =>
+              el.Ville.toLowerCase().includes(recherche.city.toLowerCase())
             )
             .map((restaurant) => (
               <Link

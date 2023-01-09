@@ -77,9 +77,12 @@ function Restaurant({ helmet }) {
               <iframe src={resto[0].Maps} title={resto[0].Titre} />
               <section className="contact">
                 <h2>Réservez dès maintenant</h2>
-                <p>Téléphone : {resto[0].Numéro}</p>
-                <p>Email : {resto[0].Email}</p>
-                <p>Site internet : {resto[0].Site}</p>
+                <a href={`tel:+262${resto[0].Numéro.replace("0", "")}`}>
+                  <p>Téléphone : {resto[0].Numéro}</p>
+                </a>
+                <a href={resto[0].Site} target="_blank" rel="noreferrer">
+                  <p>Site internet : {resto[0].Site}</p>
+                </a>
                 <p>Nous trouver : Dans la médiathèque du Port.</p>
                 <p>Adresse : {resto[0].Adresse}</p>
               </section>

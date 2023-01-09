@@ -382,11 +382,7 @@ export default function Home({ helmet }) {
 
   const choiceOptions = [
     { value: "Menu du jour", label: "Menu du jour" },
-    { value: "Dessert du jour", label: "Dessert du jour" },
-    { value: "Restaurants créoles", label: "Restaurants créoles" },
-    { value: "Pains et Lords", label: "Pains et Lords" },
-    { value: "Restaurants chinois", label: "Restaurants chinois" },
-    { value: "Restaurants végétariens", label: "Restaurants végétariens" },
+    { value: "Trouver un restaurant", label: "Trouver un restaurant" },
   ];
 
   const handleCity = (selectedOptions) => {
