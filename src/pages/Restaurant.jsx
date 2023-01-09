@@ -21,7 +21,7 @@ function Restaurant({ helmet }) {
   const { id } = useParams();
 
   const menu = JSON.parse(sessionStorage.getItem("menus")).filter((el) =>
-    el.Nom.toLowerCase().includes(id.toLowerCase())
+    el.Nom.toLowerCase().replaceAll(" ", "_").includes(id.toLowerCase())
   );
   const resto = JSON.parse(sessionStorage.getItem("restos")).filter((el) =>
     el.Nom.toLowerCase().replace(" ", "_").includes(id.toLowerCase())
@@ -205,7 +205,10 @@ function Restaurant({ helmet }) {
                 .filter((el) => el.Type !== "Dessert")
                 .map((el) => (
                   <Link
-                    to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                    to={`/Menu/${el.Nom.replaceAll(
+                      " ",
+                      "_"
+                    )}/${el.Plat.replaceAll(" ", "_")}`}
                     key={el.Plat.replaceAll(" ", "_")}
                   >
                     <button className="carte" type="button">
@@ -228,7 +231,10 @@ function Restaurant({ helmet }) {
                 .filter((el) => el.Type === "Dessert")
                 .map((el) => (
                   <Link
-                    to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                    to={`/Menu/${el.Nom.replaceAll(
+                      " ",
+                      "_"
+                    )}/${el.Plat.replaceAll(" ", "_")}`}
                     key={el.Plat.replaceAll(" ", "_")}
                   >
                     <button className="carte" type="button">

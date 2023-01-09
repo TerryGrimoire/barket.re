@@ -56,7 +56,12 @@ function Menu({ helmet }) {
                     ) && el.Type.toLowerCase().includes("repas")
                 )
                 .map((el) => (
-                  <Link to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}>
+                  <Link
+                    to={`/Menu/${el.Nom.replaceAll(
+                      " ",
+                      "_"
+                    )}/${el.Plat.replaceAll(" ", "_")}`}
+                  >
                     <div className="top">
                       <h3>{el.Plat}</h3>
                       <h3>{el.Prix}</h3>
@@ -88,7 +93,12 @@ function Menu({ helmet }) {
                     ) && el.Type.toLowerCase().includes("dessert")
                 )
                 .map((el) => (
-                  <Link to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}>
+                  <Link
+                    to={`/Menu/${el.Nom.replaceAll(
+                      " ",
+                      "_"
+                    )}/${el.Plat.replaceAll(" ", "_")}`}
+                  >
                     <div className="top">
                       <h3>{el.Plat}</h3>
                       <h3>{el.Prix}</h3>

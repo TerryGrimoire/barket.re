@@ -6,10 +6,10 @@ function Restaurant({ helmet }) {
   const { restaurant, plat } = useParams();
 
   const menu = JSON.parse(sessionStorage.getItem("menus")).filter((el) =>
-    el.Nom.toLowerCase().includes(restaurant.toLowerCase())
+    el.Nom.toLowerCase().replaceAll(" ", "_").includes(restaurant.toLowerCase())
   );
   const resto = JSON.parse(sessionStorage.getItem("restos")).filter((el) =>
-    el.Nom.toLowerCase().includes(restaurant.toLowerCase())
+    el.Nom.toLowerCase().replaceAll(" ", "_").includes(restaurant.toLowerCase())
   );
 
   const navigate = useNavigate();
@@ -114,7 +114,10 @@ function Restaurant({ helmet }) {
                     )
                     .map((el) => (
                       <Link
-                        to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                        to={`/Menu/${el.Nom.replaceAll(
+                          " ",
+                          "_"
+                        )}/${el.Plat.replaceAll(" ", "_")}`}
                         key={el.Plat.replaceAll(" ", "_")}
                       >
                         <button
@@ -152,7 +155,10 @@ function Restaurant({ helmet }) {
                     )
                     .map((el) => (
                       <Link
-                        to={`/Menu/${el.Nom}/${el.Plat.replaceAll(" ", "_")}`}
+                        to={`/Menu/${el.Nom.replaceAll(
+                          " ",
+                          "_"
+                        )}/${el.Plat.replaceAll(" ", "_")}`}
                         key={el.Plat.replaceAll(" ", "_")}
                       >
                         <button
