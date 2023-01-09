@@ -6,7 +6,7 @@ import menu from "../../assets/menu.png";
 
 function Burger({ helmet }) {
   return (
-    <header className="flex padding-header justify-between align-center header">
+    <header className="flex padding-header justify-between align-center header pink">
       <Link to="/">
         <img src={logo} alt={`logo de ${helmet.title}`} className="logo" />
       </Link>
