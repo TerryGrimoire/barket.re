@@ -102,7 +102,7 @@ function Restaurants({ helmet }) {
       <img src={pains} alt="" /> <p>Pains</p>
     </button>,
     <button type="button" className="item_ok" onDragStart={handleDragStart}>
-      <img src={vegetarien} alt="" /> <p>Végétatien</p>
+      <img src={vegetarien} alt="" /> <p>Végétarien</p>
     </button>,
     <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={chinois} alt="" /> <p>Chinois</p>
@@ -123,7 +123,7 @@ function Restaurants({ helmet }) {
 
   const responsive = {
     0: {
-      items: 2,
+      items: 2.5,
     },
     1024: {
       items: 6,
@@ -145,6 +145,7 @@ function Restaurants({ helmet }) {
           <AliceCarousel
             mouseTracking
             disableDotsControls
+            disableButtonsControls
             items={items}
             responsive={responsive}
           />

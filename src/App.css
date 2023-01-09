@@ -317,6 +317,11 @@ overflow: visible;
   padding-right: 0.3rem;
 }
 
+.restaurants .tri {
+  width: 100vw;
+  padding: 0 1rem;
+}
+
 .restaurants .tri button.item_okok {
   padding: 0 1rem;
   margin: 1rem;
