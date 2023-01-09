@@ -93,40 +93,42 @@ function Restaurants({ helmet }) {
 
   const close = dayList[day];
   const handleDragStart = (e) => e.preventDefault();
-  const responsive = {
-    0: {
-      items: 3,
-    },
-    1024: {
-      items: 5,
-    },
-  };
+
   const items = [
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={creole} alt="" /> <p>Créole</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={pains} alt="" /> <p>Pains</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={vegetarien} alt="" /> <p>Végétatien</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={chinois} alt="" /> <p>Chinois</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={indien} alt="" /> <p>Indien</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={desserts} alt="" /> <p>Desserts</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={pizzas} alt="" /> <p>Pizzas</p>
     </button>,
-    <button type="button" onDragStart={handleDragStart}>
+    <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={alcool} alt="" /> <p>Alcool</p>
     </button>,
   ];
+
+  const responsive = {
+    0: {
+      items: 2,
+    },
+    1024: {
+      items: 6,
+    },
+  };
 
   return (
     <div className="restaurants">

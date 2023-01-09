@@ -1,6 +1,5 @@
 /********************************************************************* CSS VARIABLES *********************************************************************/ 
 @import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap');
-@import "react-alice-carousel/lib/alice-carousel.css";
 :root {
 
   --main-bg-color : #d44444;
@@ -318,10 +317,7 @@ overflow: visible;
   padding-right: 0.3rem;
 }
 
-.restaurants .tri {
-  overflow: hidden;
-}
-.restaurants .tri button {
+.restaurants .tri button.item_okok {
   padding: 0 1rem;
   margin: 1rem;
   display: flex;
@@ -329,7 +325,7 @@ overflow: visible;
   align-self: center;
   flex-direction: column;
   height: fit-content;
-  width: fit-content;
+  width: 8rem;
   text-align: center;
 }
 
@@ -337,7 +333,6 @@ overflow: visible;
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
-  object-fit: cover;
 
 }
 /********************************************************************* RESTAURANT *********************************************************************/ 
