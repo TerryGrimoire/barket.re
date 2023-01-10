@@ -420,6 +420,16 @@ export default function Home({ helmet }) {
         <meta name="description" content={helmet.description} />
       </Helmet>
       <div className="home_container">
+        <div className="desktop temporary">
+          <p>
+            La version web de{" "}
+            <strong>
+              BARKET<span>.RE</span>
+            </strong>{" "}
+            est actuellement en construction. Visitez notre site depuis votre
+            smartphone.
+          </p>
+        </div>
         <h1>Toute la gastronomie créole à votre disposition </h1>
 
         <form>
