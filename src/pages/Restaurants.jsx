@@ -9,7 +9,6 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import creole from "../assets/creole.png";
 import chinois from "../assets/chinois.png";
 import vegetarien from "../assets/vegetarien.png";
-import desserts from "../assets/dessert.png";
 import pains from "../assets/pain.png";
 import pizzas from "../assets/pizza.png";
 import indien from "../assets/indien.png";
@@ -78,10 +77,10 @@ function Restaurants({ helmet }) {
     setFood(selectedOptions.map((el) => el.label));
   };
 */
-
+  /*
   const today = new Date();
-  const day = today.getDay();
-  const dayList = [
+   const day = today.getDay();
+   const dayList = [
     "Dimanche",
     "Lundi",
     "Mardi",
@@ -91,7 +90,7 @@ function Restaurants({ helmet }) {
     "Samedi",
   ];
 
-  const close = dayList[day];
+  const close = dayList[day]; */
   const handleDragStart = (e) => e.preventDefault();
 
   const items = [
@@ -109,9 +108,6 @@ function Restaurants({ helmet }) {
     </button>,
     <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={indien} alt="" /> <p>Indien</p>
-    </button>,
-    <button type="button" className="item_ok" onDragStart={handleDragStart}>
-      <img src={desserts} alt="" /> <p>Desserts</p>
     </button>,
     <button type="button" className="item_ok" onDragStart={handleDragStart}>
       <img src={pizzas} alt="" /> <p>Pizzas</p>
@@ -163,7 +159,7 @@ function Restaurants({ helmet }) {
             )
             .map((restaurant) => (
               <Link
-                to={`/restaurants/${restaurant.Nom.replace(" ", "_")}`}
+                to={`/restaurants/${restaurant.Nom.replaceAll(" ", "_")}`}
                 key={restaurant.id}
               >
                 <button type="button" className="carte">
@@ -174,7 +170,7 @@ function Restaurants({ helmet }) {
                   <img src={restaurant.img} alt={restaurant.Nom} />
                   <div className="flex justify-between align-center">
                     <p>{restaurant.Indication}</p>
-                    <small>Ferme à {close}</small>
+                    <small>Ferme à 17h</small>
                   </div>
                 </button>
               </Link>

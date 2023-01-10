@@ -324,7 +324,6 @@ overflow: visible;
 
 .restaurants .tri {
   width: 100vw;
-  padding-left: 2rem;
 }
 
 .restaurants .tri button.item_okok {
@@ -338,7 +337,11 @@ overflow: visible;
   width: 8rem;
   text-align: center;
 }
+.restaurants .tri button:first-of-type {
 
+  margin-left: 2rem;
+
+}
 .restaurants .tri img {
   height: 5rem;
   width: 5rem;
@@ -508,8 +511,8 @@ color: var(--lightgrey)
 .footer {
   padding: 1rem 2rem;
   align-items: flex-start;
-  background-color: var(--secondary-bg-color);
-  color: var(--main-bg-color);
+  background-color: var(--main-bg-color);
+  color: var(--third-color);
 }
 
 .footer * {

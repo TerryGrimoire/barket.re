@@ -22,7 +22,6 @@ function Menu({ helmet }) {
   }, []);
 
   const resto = JSON.parse(sessionStorage.getItem("restos"));
-
   return (
     <div className="menu_page">
       <Helmet>
@@ -80,7 +79,7 @@ function Menu({ helmet }) {
                         {resto
                           .filter((element) =>
                             element.Nom.toLowerCase()
-                              .replace(" ", "_")
+                              .replaceAll(" ", "_")
                               .includes(el.Nom.toLowerCase())
                           )
                           .map((restaurant) => (
@@ -113,12 +112,12 @@ function Menu({ helmet }) {
                     </div>
                     <div className="bottom">
                       <p>
-                        {el.Nom.replace("_", " ")} -{" "}
+                        {el.Nom.replaceAll("_", " ")} -{" "}
                         {resto
                           .filter((element) =>
-                            element.Nom.toLowerCase()
-                              .replace(" ", "_")
-                              .includes(el.Nom.toLowerCase())
+                            element.Nom.toLowerCase().includes(
+                              el.Nom.toLowerCase().replaceAll("_", " ")
+                            )
                           )
                           .map((restaurant) => (
                             <small>{restaurant.Indication}</small>
