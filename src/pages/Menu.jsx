@@ -22,6 +22,25 @@ function Menu({ helmet }) {
   }, []);
 
   const resto = JSON.parse(sessionStorage.getItem("restos"));
+
+  /* 
+
+  FILTER FOR THIS PAGE
+
+
+  <div className="tri">
+              <button type="button">Créole</button>
+              <button type="button">Pains</button>
+              <button type="button">Végétarien</button>
+              <button type="button">Chinois</button>
+              <button type="button">Indien</button>
+              <button type="button">Desserts</button>
+              <button type="button">Pizzas</button>
+              <button type="button">Alcool</button>
+            </div>
+
+  */
+
   return (
     <div className="menu_page">
       <Helmet>
@@ -34,17 +53,6 @@ function Menu({ helmet }) {
         <main>
           <section className="menu_top">
             <h1>Les Menus du jour</h1>
-
-            <div className="tri">
-              <button type="button">Créole</button>
-              <button type="button">Pains</button>
-              <button type="button">Végétarien</button>
-              <button type="button">Chinois</button>
-              <button type="button">Indien</button>
-              <button type="button">Desserts</button>
-              <button type="button">Pizzas</button>
-              <button type="button">Alcool</button>
-            </div>
           </section>
           <section
             className={
