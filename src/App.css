@@ -284,7 +284,6 @@ overflow: visible;
 
 .restaurants {
   overflow-x: hidden;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -324,8 +323,7 @@ overflow: visible;
 
 .restaurants .tri {
   width: 100vw;
-  padding: 0;
-  margin: 0;
+
 }
 
 .restaurants .tri button.item_okok {
@@ -347,6 +345,7 @@ overflow: visible;
   width: 5rem;
   border-radius: 50%;
 }
+
 /********************************************************************* RESTAURANT *********************************************************************/ 
 
 .restaurant_page {
