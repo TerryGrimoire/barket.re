@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import grimoirenumerique from "../../assets/grimoirenumerique.png";
 import terrygrimoire from "../../assets/terrygrimoire.jpg";
 
 function Footer() {
+  const { pathname } = useLocation();
+  // you can check a more conditions here
+  if (pathname === "/") return null;
   return (
     <footer className="footer">
       <div className="footer_plan">
