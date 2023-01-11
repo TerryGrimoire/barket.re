@@ -288,6 +288,7 @@ overflow: visible;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 .restaurants, .restaurants * {
@@ -310,7 +311,9 @@ overflow: visible;
 .restaurants button {
   border: none;
 }
-
+.restaurants button:first-of-type {
+  margin-left: 1rem;
+}
 .restaurants h1 {
   font-size: 1.5rem;
   text-align: left;
@@ -323,23 +326,9 @@ overflow: visible;
 
 .restaurants .tri {
   width: 100vw;
-
 }
 
-.restaurants .tri button.item_okok {
-  padding: 0 1rem;
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  flex-direction: column;
-  height: fit-content;
-  width: 8rem;
-  text-align: center;
-}
-.restaurants .tri:nth-child(1) {
-  margin-left: 2rem;
-}
+
 .restaurants .tri img {
   height: 5rem;
   width: 5rem;
