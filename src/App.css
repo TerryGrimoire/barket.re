@@ -337,7 +337,7 @@ overflow: visible;
   width: 8rem;
   text-align: center;
 }
-.restaurants .tri button:first-of-type {
+.restaurants .tri:nth-child(1) {
 
   margin-left: 2rem;
 
